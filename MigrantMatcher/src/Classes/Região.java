@@ -35,7 +35,7 @@ public class Região {
 		return this.catOfertas;
 	}
 
-	public void criarPedido(int index, Migrante m) {
+	public void criarPedido(int index, Migrante m) throws NoSuchHelpException {
 		this.catOfertas.criarPedido(index, m);
 	}
 

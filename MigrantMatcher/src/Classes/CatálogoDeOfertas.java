@@ -19,9 +19,11 @@ public class CatálogoDeOfertas {
 		this.catOfertas.add(a);
 	}
 
-	public void criarPedido(int index, Migrante m) {
+	public void criarPedido(int index, Migrante m) throws NoSuchHelpException {
 		if(index < this.catOfertas.size()) {
 			this.catOfertas.get(index).setMigrante(m);
+		} else if((this.itens != null && index-this.catOfertas.size() > this.itens.size()) || this.itens == null) {
+			throw new NoSuchHelpException();
 		} else {
 			this.itens.criarPedido(index-this.catOfertas.size(), m);
 		}

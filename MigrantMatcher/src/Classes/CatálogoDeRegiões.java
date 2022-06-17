@@ -17,14 +17,18 @@ public class CatálogoDeRegiões {
 				this.catRegiões.size() > 0 ? this.catRegiões.get(0) : null));
 	}
 
-	public CatálogoDeOfertas escolherRegião(String nome) {
+	public CatálogoDeOfertas escolherRegião(String nome) throws NoSuchRegionException {
+		this.lastReqRegion = null;
 		for(Região r: this.catRegiões)
 			if(r.getNome().equals(nome))
 				this.lastReqRegion = r;
+		if (this.lastReqRegion == null)
+			throw new NoSuchRegionException();
 		return this.lastReqRegion.pedirListaDeOfertas();
+		
 	}
 
-	public void criarPedido(int index, Migrante m) {
+	public void criarPedido(int index, Migrante m) throws NoSuchHelpException {
 		this.lastReqRegion.criarPedido(index, m);
 	}
 

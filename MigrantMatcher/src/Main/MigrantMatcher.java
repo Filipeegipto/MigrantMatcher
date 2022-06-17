@@ -3,6 +3,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Classes.Migrante;
+import Classes.NoSuchHelpException;
+import Classes.NoSuchRegionException;
 import Classes.Voluntário;
 import Handlers.CriarAjudaHandler;
 import Handlers.CriarOfertaDeAjudaHandler;
@@ -20,7 +22,7 @@ public class MigrantMatcher {
 	private RegistarHandler rh;
 	private SMSHandler sh;
 	
-	public static void main (String[] args) {
+	public static void main (String[] args) throws NoSuchRegionException, NoSuchHelpException {
 		MigrantMatcher m = new MigrantMatcher();
 		Scanner sc = new Scanner(System.in);
 		for(int i = 0; i < 10; i++) {
@@ -77,7 +79,7 @@ public class MigrantMatcher {
 			this.codah.criarOfertaDeAjuda(this.cah.criarOfertaDeAjuda());
 	}
 	
-	private void runMigrante(Scanner sc) {
+	private void runMigrante(Scanner sc) throws NoSuchRegionException, NoSuchHelpException {
 		System.out.println("Pretende registar-se Individualmente ou em Familia?");
 		String s = sc.nextLine();
 		if(s.equals("Individualmente")) {
@@ -108,7 +110,7 @@ public class MigrantMatcher {
 		}
 	}
 	
-	private void procuraAjuda(String s, Scanner sc, Migrante m) {
+	private void procuraAjuda(String s, Scanner sc, Migrante m) throws NoSuchRegionException, NoSuchHelpException {
 		System.out.println("Aqui tem a lista de regiões: \n" + this.pah.pedirListaDeRegiões().toString());
 		System.out.println("Indique a região desejada. \n");
 		s = this.pah.escolherRegião(sc.nextLine()).toString(0);

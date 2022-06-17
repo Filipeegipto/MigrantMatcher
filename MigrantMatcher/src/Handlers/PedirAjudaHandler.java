@@ -2,6 +2,8 @@ package Handlers;
 import Classes.CatálogoDeOfertas;
 import Classes.CatálogoDeRegiões;
 import Classes.Migrante;
+import Classes.NoSuchHelpException;
+import Classes.NoSuchRegionException;
 import Classes.Região;
 import Classes.Voluntário;
 
@@ -18,11 +20,11 @@ public class PedirAjudaHandler {
 		return this.catRegiões;
 	}
 	
-	public CatálogoDeOfertas escolherRegião(String nome) {
+	public CatálogoDeOfertas escolherRegião(String nome) throws NoSuchRegionException {
 		return this.catRegiões.escolherRegião(nome);
 	}
 	
-	public void criarPedido(int index, Migrante m) {
+	public void criarPedido(int index, Migrante m) throws NoSuchHelpException {
 		this.catRegiões.criarPedido(index, m);
 	}
 	

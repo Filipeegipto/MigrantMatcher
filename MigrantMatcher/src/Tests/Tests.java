@@ -1,5 +1,6 @@
 package Tests;
  
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Random;
@@ -9,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import Classes.Ajuda;
 import Classes.Familia;
 import Classes.Migrante;
+import Classes.NoSuchHelpException;
+import Classes.NoSuchRegionException;
 import Classes.Voluntário;
 import Handlers.CriarAjudaHandler;
 import Handlers.CriarOfertaDeAjudaHandler;
@@ -19,7 +22,7 @@ import Handlers.SMSHandler;
 class Tests {
 
 	@Test
-	void test() {
+	void test() throws NoSuchRegionException, NoSuchHelpException {
 		IdentificarHandler ih = new IdentificarHandler();
 		Random rd = new Random();
 		
@@ -85,7 +88,7 @@ class Tests {
 		
 		ph.confirmarPedido(0);
 		
-		assertEquals("Não existem ajudas disponiveis nesta região. \n", ph.escolherRegião("Lisboa").toString(0));
+		assertEquals("Não existem ajudas disponiveis nesta região. \n", ph.escolherRegião("Lisboa").toString(0));		
 		
 		SMSHandler sh = new SMSHandler();
 		Integer code = rd.nextInt(99999);
@@ -97,6 +100,8 @@ class Tests {
 		coh.criarOfertaDeAjuda(a);
 		
 		assertEquals("Já existem ajudas disponiveis na região Lisboa", sh.toString());
+		assertThrows(NoSuchHelpException.class, () -> ph.criarPedido(3, m3));
+		assertThrows(NoSuchRegionException.class, () -> ph.escolherRegião("Évora"));
 	}
 
 }
