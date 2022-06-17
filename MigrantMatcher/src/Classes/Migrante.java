@@ -17,4 +17,23 @@ public class Migrante {
 	public int getNumero() {
 		return this.numTelefone;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Migrante))
+			return false;
+		Migrante other = (Migrante) obj;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (numTelefone != other.numTelefone)
+			return false;
+		return true;
+	}
+	
+	
 }

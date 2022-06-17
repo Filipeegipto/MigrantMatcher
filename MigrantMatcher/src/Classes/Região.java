@@ -46,4 +46,19 @@ public class Região {
 	public void criarNotificação(Notificação notificação) {
 		this.listNotis.add(notificação);
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Região))
+			return false;
+		Região other = (Região) obj;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		return true;
+	}
 }

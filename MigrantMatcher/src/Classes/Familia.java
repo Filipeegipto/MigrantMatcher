@@ -21,4 +21,12 @@ public class Familia {
 	public void adicionarMembro(Migrante m) {
 		this.familia.add(m);
 	}
+	
+	public int getTamanho() {
+		return this.tamanho;
+	}
+	
+	public Migrante getCabeça() {
+		return this.cabeça;
+	}
 }

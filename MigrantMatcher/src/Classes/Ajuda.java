@@ -1,4 +1,5 @@
 package Classes;
+
 public class Ajuda {
 	private Regi„o regi„o;
 	private boolean ÈAl;
@@ -34,5 +35,5 @@ public class Ajuda {
 	
 	public void setMigrante(Migrante m) {
 		this.mig = m;
-	}
+	}	
 }

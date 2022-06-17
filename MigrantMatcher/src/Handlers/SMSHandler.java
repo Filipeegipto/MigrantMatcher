@@ -18,4 +18,8 @@ public class SMSHandler {
 	public boolean confirmar(String código) {
 		return código.equals(this.smsS.toString());
 	}
+	
+	public String toString() {
+		return this.smsS.toString();
+	}
 }
