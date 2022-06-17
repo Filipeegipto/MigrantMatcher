@@ -1,4 +1,8 @@
 package Handlers;
+
+import java.util.LinkedList;
+import java.util.List;
+
 import Classes.CatUtilizadores;
 import Classes.Familia;
 import Classes.Migrante;
@@ -6,11 +10,12 @@ import Classes.Migrante;
 public class RegistarHandler {
 	
 	private CatUtilizadores catUtilizadores;
-	
+	private List<Familia> famList;
 	private Familia currentFam;
 	
 	public RegistarHandler() {
 		this.catUtilizadores = new CatUtilizadores();
+		this.famList = new LinkedList<>();
 	}
 	
 	public Migrante criarMigrante(String nome, int numTelefone) {
@@ -30,5 +35,6 @@ public class RegistarHandler {
 	
 	public void criarFamilia(int agregado) {
 		this.currentFam = new Familia(agregado);
+		this.famList.add(currentFam);
 	}
 }
